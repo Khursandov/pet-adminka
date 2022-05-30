@@ -1,0 +1,19 @@
+@use 'sass:string'
+@use 'sass:list'
+$percent: 0.44
+
+@mixin fluid($funcionname, $size, $text: "")
+	#{$funcionname}: resize($size) #{$text}
+
+	@media (min-width: 2560px) and (max-height: 1080px)
+		#{$funcionname}: resize($size, 0.9) #{$text}
+
+	@media (min-width: 2560px) and (max-height: 1440px)
+		#{$funcionname}: resize($size, 1.1) #{$text}
+		
+	@media (min-width: 3440px) and (max-height: 1440px)
+		#{$funcionname}: resize($size, 0.9) #{$text}
+
+
+	@media (min-width: 4096px)
+		#{$funcionname}: resize($size, 1.1) #{$text}

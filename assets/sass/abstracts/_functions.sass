@@ -1,0 +1,21 @@
+@use 'sass:string'
+@use 'sass:list'
+$percent: 0.44
+
+@function resize($size, $test: 1)
+	$size: $size * $test
+	$v-max: 1920 * $test
+	$v-min: 800 * $test
+	$f-min: ($size * $test) * $percent
+	$f-max: ($size * $test)
+
+	$k: ($f-max - $f-min)/($v-max - $v-min)
+	$b: $f-min - $k * $v-min
+
+	$b: $b * 1px
+	@return calc( #{$k} * 100vw + #{$b} )
+
+@function zoom($val)
+	@return calc(var(--zoom) * #{$val})
+
+$zoom: var(--zoom)
